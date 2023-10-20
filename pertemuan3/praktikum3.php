@@ -53,6 +53,10 @@ class Animal
 
 # membuat object
 # kirimkan data hewan (array) ke constructor
+echo "Nama: Muhammad Rifky Syahputra";
+echo "NIM: 0110222017";
+echo "Kelas: TI08 - SE02";
+
 $animal = new Animal(['badak', 'jerapah']);
 
 echo "Index - Menampilkan seluruh hewan <br>";
