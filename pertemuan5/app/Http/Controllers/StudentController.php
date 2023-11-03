@@ -100,18 +100,34 @@ class StudentController extends Controller
 
         $student = Student::find($id);
 
-        $student->nama = $request->nama ?? $student->nama;
-        $student->nim = $request->nim ?? $student->nim;
-        $student->email = $request->email ?? $student->email;
-        $student->jurusan = $request->jurusan ?? $student->jurusan;
-        $student->save();
+        // $student->nama = $request->nama ?? $student->nama;
+        // $student->nim = $request->nim ?? $student->nim;
+        // $student->email = $request->email ?? $student->email;
+        // $student->jurusan = $request->jurusan ?? $student->jurusan;
+        // $student->save();
 
-        $respons = [
-            'pesan' => 'Data berhasil diubah',
-            'data' => $student
-        ];
+        if ($student) {
+            $input = [
+                'nama' => $request->nama ?? $student->nama,
+                'nim' => $request->nim ?? $student->nim,
+                'email' => $request->email ?? $student->email,
+                'jurusan' => $request->jurusan ?? $student->jurusan
+            ];
 
-        return response()->json($respons, 201);
+            $student->update($input);
+
+            $respons = [
+                'pesan' => 'Data berhasil diubah',
+                'data' => $student
+            ];
+
+            return response()->json($respons, 201);
+        } else {
+            $respons = [
+                'pesan' => 'Data tidak ditemukan'
+            ];
+            return response()->json($respons, 404);
+        }
     }
 
     /**
