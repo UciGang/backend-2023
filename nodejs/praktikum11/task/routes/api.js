@@ -1,11 +1,14 @@
 // Import Student Controller
 const StudentController = require("../controllers/StudentController");
 
+// import expres
 const express = require("express");
+
+// buat objek router
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Hello Express");
+  res.send("Hello Rifky");
 });
 
 router.get("/students", StudentController.index);
